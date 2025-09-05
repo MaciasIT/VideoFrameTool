@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+*.pyd
+*.so
+*.egg-info/
+build/
+dist/
+
+# Virtual Environment
+venv/
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# IDE/Editor Files
+.vscode/
+.idea/
+
+# Documentation Build Artifacts
+docs/_build/
+
+# Output Folders
+frames/
+paquete/
+video/
+
+# Gemini Context File
+GEMINI.md
