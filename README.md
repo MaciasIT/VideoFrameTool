@@ -5,7 +5,7 @@
 ## 🚀 Características
 - Soporte para videos de YouTube o archivos locales.
 - Extracción de fotogramas a intervalos personalizados.
-- Exportación de imágenes en formato `.png`.
+- Exportación de imágenes en varios formatos (PNG, JPG, BMP) con ajuste de calidad para JPG.
 - Opción de generar un archivo `.zip` con todos los fotogramas.
 - Compatible con Python 3.10+.
 - Preparado para futura interfaz gráfica.

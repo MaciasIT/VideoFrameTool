@@ -232,3 +232,29 @@ Se ha añadido una nueva opción en el script principal (`main.py`) para permiti
 El usuario ahora tiene mayor flexibilidad para definir los intervalos de extracción, especialmente útil para videos de larga duración.
 
 ---
+
+## ✅ [Fase 11 - Nuevas Funcionalidades]
+
+**Fecha:** 2025-09-06  
+**Archivo:** `frame_extractor.py`
+
+**Descripción:**  
+Se ha implementado la funcionalidad para permitir al usuario seleccionar el formato de imagen de salida para los fotogramas extraídos, incluyendo `.png`, `.jpg` y `.bmp`.
+
+**Resultado:**  
+El usuario tiene mayor control sobre el formato de las imágenes de salida.
+
+---
+
+## ✅ [Fase 12 - Nuevas Funcionalidades]
+
+**Fecha:** 2025-09-06  
+**Archivo:** `frame_extractor.py`
+
+**Descripción:**  
+Se ha añadido la opción de ajustar la calidad de las imágenes para el formato JPG (Alta, Media, Baja) durante la extracción de fotogramas.
+
+**Resultado:**  
+El usuario puede optimizar el tamaño y la calidad de las imágenes JPG generadas.
+
+---
