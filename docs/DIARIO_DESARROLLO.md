@@ -257,3 +257,16 @@ Se ha añadido la opción de ajustar la calidad de las imágenes para el formato
 **Resultado:**  
 El usuario puede optimizar el tamaño y la calidad de las imágenes JPG generadas.
 
+---
+
+## ✅ [Fase 13 - Extracción de fotogramas con OCR]
+
+**Fecha:** 2025-09-06  
+**Archivos:** `frame_extractor.py`, `main.py`
+
+**Descripción:**  
+Se ha implementado la funcionalidad de extracción de fotogramas con detección de texto (OCR). El módulo `frame_extractor.py` ahora incluye una función `has_text()` que utiliza `pytesseract` para identificar si un fotograma contiene texto. El script principal `main.py` expone una nueva opción al usuario (`only_text_frames`) para activar esta funcionalidad, permitiendo guardar solo aquellos fotogramas que contengan texto.
+
+**Resultado:**  
+El usuario puede realizar una extracción más selectiva de fotogramas, enfocándose únicamente en aquellos con contenido textual, lo que es útil para análisis de documentos o presentaciones en video.
+
