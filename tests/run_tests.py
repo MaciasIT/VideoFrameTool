@@ -7,8 +7,7 @@ Ejecuta todos los tests del proyecto automáticamente.
 import unittest
 
 if __name__ == "__main__":
-    print("🔍 Ejecutando todos los tests del proyecto...
-")
+    print("🔍 Ejecutando todos los tests del proyecto...\n")
     loader = unittest.TestLoader()
     suite = loader.discover("tests")
 

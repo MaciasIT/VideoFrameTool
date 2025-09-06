@@ -1,6 +1,9 @@
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import unittest
 import tempfile
-import os
 import cv2
 import numpy as np
 from frame_extractor import extract_frames

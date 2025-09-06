@@ -25,6 +25,7 @@ docs/_build/
 frames/
 paquete/
 video/
+dist_zip/
 
 # Gemini Context File
 GEMINI.md
