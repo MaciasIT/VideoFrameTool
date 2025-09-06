@@ -257,4 +257,3 @@ Se ha añadido la opción de ajustar la calidad de las imágenes para el formato
 **Resultado:**  
 El usuario puede optimizar el tamaño y la calidad de las imágenes JPG generadas.
 
----

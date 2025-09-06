@@ -28,5 +28,8 @@ python main.py
 ## 🤝 Contribuciones
 Ver [`CONTRIBUTING.md`](./CONTRIBUTING.md)
 
+## 📚 Documentación
+[Ver Documentación HTML](docs/_build/html/index.html)
+
 ## 📄 Licencia
 Este proyecto es de código abierto bajo la licencia MIT.
