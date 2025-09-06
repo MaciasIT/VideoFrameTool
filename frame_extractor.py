@@ -9,7 +9,21 @@ por segundos o por cantidad de frames. Utiliza OpenCV para la lectura del video.
 import cv2
 import os
 
-def extract_frames(video_path, output_folder, interval=1, by_seconds=True):
+def extract_frames(video_path, output_folder, interval=1, by_seconds=True, image_format=".png", quality=95):
+    """
+    Extrae fotogramas de un video y los guarda como imágenes.
+
+    Args:
+        video_path (str): Ruta al archivo de video.
+        output_folder (str): Carpeta donde se guardarán los fotogramas.
+        interval (int, optional): Intervalo de captura. Defaults to 1.
+        by_seconds (bool, optional): Si True, el intervalo es en segundos; si False, es en número de frames. Defaults to True.
+        image_format (str, optional): Formato de la imagen de salida (e.g., ".png", ".jpg"). Defaults to ".png".
+        quality (int, optional): Calidad para formatos como JPG (0-100). Defaults to 95.
+
+    Returns:
+        int: Número de fotogramas guardados.
+    """
     cap = cv2.VideoCapture(video_path)
 
     if not cap.isOpened():
@@ -37,8 +51,13 @@ def extract_frames(video_path, output_folder, interval=1, by_seconds=True):
             break
 
         if frame_id % interval_frames == 0:
-            filename = os.path.join(output_folder, f"frame_{image_id:05d}.png")
-            cv2.imwrite(filename, frame)
+            filename = os.path.join(output_folder, f"frame_{image_id:05d}{image_format}")
+            
+            if image_format.lower() == '.jpg':
+                cv2.imwrite(filename, frame, [cv2.IMWRITE_JPEG_QUALITY, quality])
+            else:
+                cv2.imwrite(filename, frame)
+
             saved_frames += 1
             image_id += 1
 
