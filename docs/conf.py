@@ -25,13 +25,9 @@ extensions = [
     'sphinx.ext.napoleon',  # Si usas docstrings estilo Google o NumPy
     'sphinx.ext.intersphinx',  # Para enlazar con la documentación de otras librerías
     'sphinx.ext.todo',  # Si quieres incluir tareas pendientes en la documentación
-    'myst_parser',
 
 ]
-
-autosummary_generate = True
-autosummary_patterns = ['api/*.rst']
-
+autosummary_generate = True  # Genera automáticamente los resúmenes
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 

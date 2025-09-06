@@ -85,6 +85,15 @@ def main():
                 break
             print("Opción inválida. Intenta de nuevo.")
 
+    # --- Nueva opción: Extraer solo frames con texto ---
+    only_text_frames = False
+    while True:
+        text_frame_choice = input("\n¿Deseas extraer solo fotogramas que contengan texto? (s/n): ").strip().lower()
+        if text_frame_choice in ["s", "n"]:
+            only_text_frames = (text_frame_choice == "s")
+            break
+        print("Opción inválida. Por favor, responde 's' o 'n'.")
+
     # --- Extracción de Frames ---
     extracted = extract_frames(
         video_path,
@@ -92,7 +101,8 @@ def main():
         interval=interval,
         by_seconds=by_seconds,
         image_format=image_format,
-        quality=quality
+        quality=quality,
+        only_text_frames=only_text_frames
     )
     if extracted == 0:
         print("❌ No se extrajo ningún fotograma. Saliendo...")

@@ -1,3 +1,5 @@
-pytube
 opencv-python
+pytube
 numpy
+pytesseract
+Pillow

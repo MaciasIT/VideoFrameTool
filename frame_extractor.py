@@ -8,8 +8,24 @@ por segundos o por cantidad de frames. Utiliza OpenCV para la lectura del video.
 
 import cv2
 import os
+import pytesseract
+from PIL import Image
 
-def extract_frames(video_path, output_folder, interval=1, by_seconds=True, image_format=".png", quality=95):
+def has_text(frame):
+    """
+    Verifica si un fotograma contiene texto utilizando Tesseract OCR.
+    """
+    # Convertir el frame de OpenCV (BGR) a PIL Image (RGB)
+    rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    pil_image = Image.fromarray(rgb_frame)
+    
+    # Realizar OCR en la imagen
+    text = pytesseract.image_to_string(pil_image, lang='spa') # Puedes cambiar 'spa' a 'eng' o 'osd' (orientación y script detection)
+    
+    # Considerar que hay texto si la cadena no está vacía o solo contiene espacios en blanco
+    return bool(text.strip())
+
+def extract_frames(video_path, output_folder, interval=1, by_seconds=True, image_format=".png", quality=95, only_text_frames=False):
     """
     Extrae fotogramas de un video y los guarda como imágenes.
 
@@ -51,6 +67,11 @@ def extract_frames(video_path, output_folder, interval=1, by_seconds=True, image
             break
 
         if frame_id % interval_frames == 0:
+            # Si only_text_frames es True, verificar si el frame contiene texto
+            if only_text_frames and not has_text(frame):
+                frame_id += 1
+                continue # Saltar este frame si no tiene texto
+
             filename = os.path.join(output_folder, f"frame_{image_id:05d}{image_format}")
             
             if image_format.lower() == '.jpg':
