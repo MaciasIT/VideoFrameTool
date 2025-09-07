@@ -80,10 +80,10 @@ def extract_frames(video_path, output_folder, interval=1, by_seconds=True, image
             # Si only_text_frames es True, verificar si el frame contiene texto
             if only_text_frames:
                 # For debugging: Save the frame to inspect what Tesseract sees
-                debug_folder = os.path.join(output_folder, "debug_frames")
-                os.makedirs(debug_folder, exist_ok=True)
-                debug_filename = os.path.join(debug_folder, f"debug_frame_{frame_id:05d}.png")
-                cv2.imwrite(debug_filename, frame)
+                # debug_folder = os.path.join(output_folder, "debug_frames")
+                # os.makedirs(debug_folder, exist_ok=True)
+                # debug_filename = os.path.join(debug_folder, f"debug_frame_{frame_id:05d}.png")
+                # cv2.imwrite(debug_filename, frame)
                 
                 if not has_text(frame):
                     continue # Saltar este frame si no tiene texto
