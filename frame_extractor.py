@@ -10,6 +10,9 @@ import cv2
 import os
 import pytesseract
 from PIL import Image
+import numpy as np
+
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 def has_text(frame):
     """
@@ -50,6 +53,13 @@ def extract_frames(video_path, output_folder, interval=1, by_seconds=True, image
 
     fps = cap.get(cv2.CAP_PROP_FPS)
     total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+
+    if fps <= 0 or total_frames <= 0:
+        print(f"❌ Error: No se pudo leer correctamente los metadatos del video (FPS: {fps}, Total Frames: {total_frames}).")
+        print("Esto puede deberse a un archivo de video corrupto o un formato no soportado.")
+        cap.release()
+        return 0
+        
     duration = total_frames / fps
 
     print(f"📽️ Video: {video_path}")
@@ -68,9 +78,15 @@ def extract_frames(video_path, output_folder, interval=1, by_seconds=True, image
 
         if frame_id % interval_frames == 0:
             # Si only_text_frames es True, verificar si el frame contiene texto
-            if only_text_frames and not has_text(frame):
-                frame_id += 1
-                continue # Saltar este frame si no tiene texto
+            if only_text_frames:
+                # For debugging: Save the frame to inspect what Tesseract sees
+                debug_folder = os.path.join(output_folder, "debug_frames")
+                os.makedirs(debug_folder, exist_ok=True)
+                debug_filename = os.path.join(debug_folder, f"debug_frame_{frame_id:05d}.png")
+                cv2.imwrite(debug_filename, frame)
+                
+                if not has_text(frame):
+                    continue # Saltar este frame si no tiene texto
 
             filename = os.path.join(output_folder, f"frame_{image_id:05d}{image_format}")
             
@@ -78,6 +94,8 @@ def extract_frames(video_path, output_folder, interval=1, by_seconds=True, image
                 cv2.imwrite(filename, frame, [cv2.IMWRITE_JPEG_QUALITY, quality])
             else:
                 cv2.imwrite(filename, frame)
+
+            print(f"DEBUG: Saved frame_id: {frame_id} as {filename}") # Add this line
 
             saved_frames += 1
             image_id += 1
